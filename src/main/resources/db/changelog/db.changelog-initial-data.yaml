@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-organizations-and-patients
+      author: farkasb
+      changes:
+        - insert:
+            tableName: organizations
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: "St. George's Hospital"
+              - column:
+                  name: address
+                  value: "Blackshaw Rd, London SW17 0QT, UK"
+              - column:
+                  name: phone
+                  value: "+442088256555"
+
+        - insert:
+            tableName: organizations
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: "Mayo Clinic"
+              - column:
+                  name: address
+                  value: "200 1st St SW, Rochester, MN 55905, USA"
+              - column:
+                  name: phone
+                  value: "+15072841100"
+        - insert:
+            tableName: patients
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: family
+                  value: "Smith"
+              - column:
+                  name: given
+                  value: "John"
+              - column:
+                  name: gender
+                  value: "male"
+              - column:
+                  name: birth_date
+                  valueDate: "1990-04-10"
+              - column:
+                  name: address_line
+                  value: "10 Downing Street"
+              - column:
+                  name: address_city
+                  value: "London"
+              - column:
+                  name: address_postal_code
+                  value: "SW1A 2AA"
+              - column:
+                  name: address_country
+                  value: "UK"
+              - column:
+                  name: phone
+                  value: "+447700900123"
+              - column:
+                  name: managing_org_id
+                  valueNumeric: 1
+
+        - insert:
+            tableName: patients
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: family
+                  value: "Taylor"
+              - column:
+                  name: given
+                  value: "Emily"
+              - column:
+                  name: gender
+                  value: "female"
+              - column:
+                  name: birth_date
+                  valueDate: "1982-07-22"
+              - column:
+                  name: address_line
+                  value: "123 Main St"
+              - column:
+                  name: address_city
+                  value: "Chicago"
+              - column:
+                  name: address_postal_code
+                  value: "60601"
+              - column:
+                  name: address_country
+                  value: "USA"
+              - column:
+                  name: phone
+                  value: "+13125551234"
+              - column:
+                  name: managing_org_id
+                  valueNumeric: 2

@@ -1,0 +1,26 @@
+spring:
+    liquibase:
+        change-log: classpath:db/changelog/db.changelog-master.yaml
+        enabled: true
+    datasource:
+        url: jdbc:postgresql://localhost:5432/fhirdb
+        username: postgres
+        password: 123456
+    security:
+        user:
+            name: admin
+            password: admin123
+server:
+    port: 8080
+jwt:
+    secret: a-string-secret-at-least-256-bits-long
+logging:
+    level:
+        org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor: DEBUG
+        org.springframework.security.web.access: DEBUG
+        org.springframework.security.web.FilterChainProxy: DEBUG
+        com.scaler.auth.filter.JwtAuthenticationFilter: DEBUG
+        com.scaler.config.SecurityConfig: DEBUG
+hapi:
+    fhir:
+        version: R4

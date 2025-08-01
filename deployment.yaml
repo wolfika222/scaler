@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fhir-patient-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fhir-patient-service
+  template:
+    metadata:
+      labels:
+        app: fhir-patient-service
+    spec:
+      containers:
+        - name: app
+          image: your-registry/fhir-patient-service:latest
+          ports:
+            - containerPort: 8080

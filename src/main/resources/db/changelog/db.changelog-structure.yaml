@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-organizations
+      author: farkasb
+      changes:
+        - createTable:
+            tableName: organizations
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(1024)
+              - column:
+                  name: phone
+                  type: VARCHAR(32)
+  - changeSet:
+      id: 2-create-patients
+      author: farkasb
+      changes:
+        - createTable:
+            tableName: patients
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: family
+                  type: VARCHAR(255)
+              - column:
+                  name: given
+                  type: VARCHAR(255)
+              - column:
+                  name: gender
+                  type: VARCHAR(16)
+              - column:
+                  name: birth_date
+                  type: DATE
+
+              # Embedded Address fields:
+              - column:
+                  name: address_line
+                  type: VARCHAR(255)
+              - column:
+                  name: address_city
+                  type: VARCHAR(255)
+              - column:
+                  name: address_postal_code
+                  type: VARCHAR(32)
+              - column:
+                  name: address_country
+                  type: VARCHAR(64)
+
+              - column:
+                  name: phone
+                  type: VARCHAR(32)
+              - column:
+                  name: managing_org_id
+                  type: BIGINT
+
+        - addForeignKeyConstraint:
+            constraintName: fk_patients_organization
+            baseTableName: patients
+            baseColumnNames: managing_org_id
+            referencedTableName: organizations
+            referencedColumnNames: id
+            onDelete: SET NULL
